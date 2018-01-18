@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    
+<head>
+  
+<title>MyBlockchainApp</title>
+<script src="web3JS/web3.js/dist/web3.min.js"></script> 
+    <script type="text/javascript">
+    
+    if (typeof web3 !== 'undefined') {
+        console.log("Yuhhuh");
+        web3 = new Web3(web3.currentProvider);
+    } else {
+        // set the provider you want from Web3.providers
+        console.log("Yuhow");
+        web3 = new Web3(new Web3.providers.HttpProvider("http://0.0.0.0:8545/"));
+    }
+    
+    function getBalance() {
+        document.getElementById("myBalance").innerHTML = web3.eth.getbalance(web3.eth.accounts[0]);
+    }
+        
+    function printAccounts() {
+        console.log(web3.eth.getAccounts());
+    }
+    
+    </script>  
+</head>
+<body>
+    <h1>This is My Balance</h1>
+    <button onclick="getBalance()">Update my Balance</button>
+    <span id="myBalance">Zero</span> in Ether
+    <br>
+    <button onclick="printAccounts()">Print Accounts</button>
+</body>
+
+
+</html>
